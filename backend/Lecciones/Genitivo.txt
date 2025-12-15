@@ -1,0 +1,7 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+GEN
+
+mandatory_vocabulary
+GEN, -aren, del/de la

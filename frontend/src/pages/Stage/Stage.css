@@ -1,0 +1,486 @@
+/* ==========================================================
+   🌿 ESTILO GENERAL
+   ========================================================== */
+:root {
+  overflow: hidden;
+}
+
+.stage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  padding: 1.2rem;
+  box-sizing: border-box;
+  background-color: #f6f8fa;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+/* ==========================================================
+   🧭 HEADER — Progreso y vidas
+   ========================================================== */
+.stage-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1.2rem 0 1.5rem;
+}
+
+.stage-header-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Botón de salir */
+.exit-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #036b52;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.exit-btn:hover {
+  color: #02543f;
+  transform: scale(1.15);
+}
+
+/* Barra progreso */
+.progress-bar {
+  flex-grow: 1;
+  height: 10px;
+  background-color: #e7f7ec;
+  border-radius: 10px;
+  margin: 0 1.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #036b52;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* Vidas */
+.lives {
+  display: flex;
+  gap: 6px;
+  font-size: 1.5rem;
+}
+
+.heart {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.heart-full {
+  color: #036b52;
+  filter: drop-shadow(0 0 3px rgba(3, 107, 82, 0.6));
+}
+
+.heart-empty {
+  color: #bbb;
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+/* ==========================================================
+   📘 CONTENIDO PRINCIPAL
+   ========================================================== */
+.stage-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  padding: 0 1rem;
+  gap: 1.6rem;
+}
+
+/* ==========================================================
+   🔊 ORACIÓN / SENTENCE
+   ========================================================== */
+.sentence-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem 2rem;
+  background-color: #fff;
+  border: 1px solid rgba(3, 107, 82, 0.15);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(3, 107, 82, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sentence-container:hover {
+  box-shadow: 0 6px 18px rgba(3, 107, 82, 0.12);
+}
+
+.sound-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  margin-right: 0.9rem;
+  cursor: pointer;
+  color: #036b52;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.sound-btn:hover {
+  transform: scale(1.15);
+  color: #02543f;
+}
+
+.sentence {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 2rem;
+  word-spacing: 0.2rem;
+}
+
+/* ==========================================================
+   📚 PALABRAS / TOOLTIP
+   ========================================================== */
+.word {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border-bottom: 2px dotted #036b52;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.word:hover {
+  border-bottom: 2px solid #02543f;
+  color: #02543f;
+}
+
+.new-word {
+  color: #f8c41b;
+  font-weight: 600;
+}
+
+/* Tooltip */
+.word .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #036b52;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(3, 107, 82, 0.3);
+  transition: opacity 0.25s ease;
+}
+
+.word .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #036b52 transparent transparent transparent;
+}
+
+.word:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ==========================================================
+   ✏️ ÁREA DE TRADUCCIÓN
+   ========================================================== */
+.translation-input {
+  width: 65%;
+  max-width: 640px;
+  height: 110px;
+  padding: 1rem 1.2rem;
+  border: 2px solid rgba(3, 107, 82, 0.25);
+  border-radius: 14px;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 4px 14px rgba(3, 107, 82, 0.08);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.translation-input:focus {
+  border-color: #036b52;
+  box-shadow: 0 0 0 4px rgba(3, 107, 82, 0.15);
+}
+
+.translation-input::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* ==========================================================
+   🦶 FOOTER — Acierto / Error
+   ========================================================== */
+.stage-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  padding: 1.5rem 1rem;
+  background-color: #f6f8fa;
+  border-top: 3px solid #036b52;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+  z-index: 50;
+  box-sizing: border-box;
+}
+
+.stage-footer > * {
+  flex: 0 0 140px;
+  text-align: center;
+}
+
+/* Verde éxito */
+.stage-footer.correct-feedback {
+  background-color: #ecfdf5;
+  border-top-color: #036b52;
+  box-shadow: inset 0 2px 8px rgba(3, 107, 82, 0.1);
+}
+
+/* Rojo error */
+.stage-footer.wrong-feedback {
+  background-color: #fef2f2;
+  border-top-color: #dc2626;
+  animation: shake 0.35s ease;
+}
+
+/* Botones */
+.skip-btn,
+.check-btn {
+  min-width: 140px;
+  padding: 0.9rem 1.2rem;
+  background-color: #036b52;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.skip-btn:hover,
+.check-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Textos de feedback */
+.correct-label {
+  background: none;
+  border: none;
+  color: #036b52;
+  font-size: 1.1rem;
+  font-weight: 700;
+  animation: successPulse 1s ease-in-out forwards;
+}
+
+.wrong-label {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 1.1rem;
+  font-weight: 700;
+  animation: shake 0.35s ease forwards;
+}
+
+/* Animaciones */
+@keyframes successPulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 10px rgba(3, 107, 82, 0.4); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* ==========================================================
+   ⏳ LOADING SCREEN
+   ========================================================== */
+.loading-screen {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.spinner {
+  margin-top: 20px;
+  width: 45px;
+  height: 45px;
+  border: 5px solid #ddd;
+  border-top-color: #4CAF50;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================
+   📱 RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .stage-header-box {
+    width: 90%;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .progress-bar {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+
+  .sentence-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .sound-btn {
+    margin-bottom: 0.6rem;
+  }
+
+  .translation-input {
+    width: 90%;
+    height: 100px;
+  }
+
+  .stage-footer {
+    flex-direction: column;
+    padding: 1rem;
+    height: auto;
+  }
+
+  .skip-btn,
+  .check-btn,
+  .correct-label,
+  .wrong-label {
+    width: 90%;
+  }
+}
+
+/* ============================== */
+/*         VICTORY SCREEN         */
+/* ============================== */
+
+.victory-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeIn 0.6s ease;
+}
+
+.victory-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 1rem;
+  animation: pop 0.5s ease;
+}
+
+.victory-text {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.victory-screen .check-btn {
+  background-color: #4caf50 !important;
+  border-color: #4caf50 !important;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+}
+
+/* Animaciones suaves */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.7); }
+  100% { transform: scale(1); }
+}
+
+/* ============================== */
+/*         DEFEAT SCREEN          */
+/* ============================== */
+
+.defeat-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeIn 0.6s ease;
+}
+
+.defeat-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+.defeat-text {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.defeat-btn {
+  background-color: #dc2626 !important;
+  color: white !important;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+}

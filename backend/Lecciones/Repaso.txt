@@ -1,0 +1,6 @@
+// No hay nada obligatorio y se tira de lo que ya se sabe
+
+mandatory_grammar
+
+
+mandatory_vocabulary

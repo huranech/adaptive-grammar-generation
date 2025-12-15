@@ -1,0 +1,15 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+NOUN
+
+mandatory_vocabulary
+NOUN, baso, bosque
+NOUN, mendi, monte
+NOUN, jatetxe, restaurante
+NOUN, txori, pájaro
+NOUN, katu, gato
+NOUN, txakur, perro
+NOUN, ikasle, estudiante
+NOUN, hosto, hoja
+NOUN, zuhaitz, árbol

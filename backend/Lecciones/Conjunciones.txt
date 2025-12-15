@@ -1,0 +1,8 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+CCONJ
+
+mandatory_vocabulary
+CCONJ, eta, y
+CCONJ, edo, o

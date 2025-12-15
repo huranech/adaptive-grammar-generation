@@ -1,0 +1,9 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+VERB
+
+mandatory_vocabulary
+VERB, doa, va
+VERB, dator, viene
+VERB, dabil, anda

@@ -1,0 +1,16 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+ABS
+NOUN
+
+mandatory_vocabulary
+ABS, -a, el/la
+NOUN, liburu, libro
+NOUN, sagar, manzana
+NOUN, mutil, chico
+NOUN, neska, chica
+NOUN, gizon, hombre
+NOUN, emakume, mujer
+NOUN, ur, agua
+NOUN, etxe, casa

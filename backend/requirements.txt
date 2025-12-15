@@ -1,0 +1,11 @@
+flask
+flask-cors
+psycopg2-binary
+werkzeug
+transformers
+torch
+sentencepiece
+scipy
+numpy
+sentence-transformers
+sacremoses

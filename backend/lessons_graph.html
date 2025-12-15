@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 900px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#00aeff", "id": "Interjecciones", "label": "\ud83d\udc4b\ud83c\udffc Interjecciones", "shape": "dot", "title": "Interjecciones"}, {"color": "#00aeff", "id": "Repaso", "label": "\ud83e\udde0 Repaso", "shape": "dot", "title": "Repaso"}, {"color": "#00aeff", "id": "Sustantivos", "label": "\ud83d\udc08\u200d\u2b1b Sustantivos", "shape": "dot", "title": "Sustantivos"}, {"color": "#00ff0dff", "id": "Determinantes", "label": "\ud83e\udef5 Determinantes", "shape": "dot", "title": "Determinantes"}, {"color": "#00aeff", "id": "Vocabulario (Sustantivos)", "label": "\ud83d\udc08\u200d\u2b1b Vocabulario (Sustantivos)", "shape": "dot", "title": "Vocabulario (Sustantivos)"}, {"color": "#ff002bff", "id": "Descripciones", "label": "\ud83d\udcd0 Descripciones", "shape": "dot", "title": "Descripciones"}, {"color": "#8a5a00ff", "id": "Genitivo", "label": "\ud83d\udc5b Genitivo", "shape": "dot", "title": "Genitivo"}, {"color": "#ff002bff", "id": "Vocabulario (Adjetivos)", "label": "\ud83d\udcd0 Vocabulario (Adjetivos)", "shape": "dot", "title": "Vocabulario (Adjetivos)"}, {"color": "#ff002bff", "id": "Negaci\u00f3n", "label": "\ud83d\ude45\u200d\u2642\ufe0f Negaci\u00f3n", "shape": "dot", "title": "Negaci\u00f3n"}, {"color": "#00ff0dff", "id": "Pronombres personales", "label": "\u261d\ufe0f Pronombres personales", "shape": "dot", "title": "Pronombres personales"}, {"color": "#ffae00ff", "id": "Sint\u00e9tico intransitivo progresivo", "label": "\ud83e\udea8 Sint\u00e9tico intransitivo progresivo", "shape": "dot", "title": "Sint\u00e9tico intransitivo progresivo"}, {"color": "#ffae00ff", "id": "Sint\u00e9tico intransitivo pasado", "label": "\ud83e\udea8 Sint\u00e9tico intransitivo pasado", "shape": "dot", "title": "Sint\u00e9tico intransitivo pasado"}, {"color": "#ffae00ff", "id": "Per\u00edfrasis NOR perfectivo", "label": "\ud83c\udfc3 Per\u00edfrasis NOR perfectivo", "shape": "dot", "title": "Per\u00edfrasis NOR perfectivo"}, {"color": "#ffae00ff", "id": "Per\u00edfrasis NOR imperativo", "label": "\u2757 Per\u00edfrasis NOR imperativo", "shape": "dot", "title": "Per\u00edfrasis NOR imperativo"}, {"color": "#ffae00ff", "id": "Per\u00edfrasis NOR pasado", "label": "\ud83c\udfc3 Per\u00edfrasis NOR pasado", "shape": "dot", "title": "Per\u00edfrasis NOR pasado"}, {"color": "#ffae00ff", "id": "Prospecci\u00f3n", "label": "\ud83d\ude80 Prospecci\u00f3n", "shape": "dot", "title": "Prospecci\u00f3n"}, {"color": "#8a5a00ff", "id": "Adlativo", "label": "\ud83c\udfc3\u200d\u2642\ufe0f\u200d\u27a1\ufe0f Adlativo", "shape": "dot", "title": "Adlativo"}, {"color": "#8a5a00ff", "id": "Inesivo", "label": "\ud83d\udccd Inesivo", "shape": "dot", "title": "Inesivo"}, {"color": "#8a5a00ff", "id": "Ablativo", "label": "\ud83d\udce8 Ablativo", "shape": "dot", "title": "Ablativo"}, {"color": "#8a5a00ff", "id": "Comitativo", "label": "\ud83e\udec2 Comitativo", "shape": "dot", "title": "Comitativo"}, {"color": "#8a5a00ff", "id": "Locativo", "label": "\ud83e\udded Locativo", "shape": "dot", "title": "Locativo"}, {"color": "#ffae00ff", "id": "Per\u00edfrasis NOR-NORI perfectivo", "label": "\ud83c\udfc3 Per\u00edfrasis NOR-NORI perfectivo", "shape": "dot", "title": "Per\u00edfrasis NOR-NORI perfectivo"}, {"color": "#ffae00ff", "id": "Per\u00edfrasis NOR-NORI pasado", "label": "\ud83c\udfc3 Per\u00edfrasis NOR-NORI pasado", "shape": "dot", "title": "Per\u00edfrasis NOR-NORI pasado"}, {"color": "#ffae00ff", "id": "Per\u00edfrasis NOR-NORK perfectivo", "label": "\u2692\ufe0f Per\u00edfrasis NOR-NORK perfectivo", "shape": "dot", "title": "Per\u00edfrasis NOR-NORK perfectivo"}, {"color": "#ffae00ff", "id": "Vocabulario (Verbos)", "label": "\u2692\ufe0f Vocabulario (Verbos)", "shape": "dot", "title": "Vocabulario (Verbos)"}, {"color": "#8a5a00ff", "id": "Benefactivo", "label": "\ud83d\udcb0 Benefactivo", "shape": "dot", "title": "Benefactivo"}, {"color": "#8a5a00ff", "id": "Causativo", "label": "\ud83d\udd25 Causativo", "shape": "dot", "title": "Causativo"}, {"color": "#8a5a00ff", "id": "Instrumental", "label": "\ud83d\udd27 Instrumental", "shape": "dot", "title": "Instrumental"}, {"color": "#ffae00ff", "id": "Verbos modales", "label": "\u2728 Verbos modales", "shape": "dot", "title": "Verbos modales"}, {"color": "#8a5a00ff", "id": "Partitivo", "label": "\ud83c\udfdc\ufe0f Partitivo", "shape": "dot", "title": "Partitivo"}, {"color": "#ff002bff", "id": "Postposiciones", "label": "\u27a1\ufe0f Postposiciones", "shape": "dot", "title": "Postposiciones"}, {"color": "#ffae00ff", "id": "Sint\u00e9tico transitivo progresivo", "label": "\ud83e\udea8 Sint\u00e9tico transitivo progresivo", "shape": "dot", "title": "Sint\u00e9tico transitivo progresivo"}, {"color": "#ffae00ff", "id": "Per\u00edfrasis NOR-NORI-NORK perfectivo", "label": "\ud83e\udef4 Per\u00edfrasis NOR-NORI-NORK perfectivo", "shape": "dot", "title": "Per\u00edfrasis NOR-NORI-NORK perfectivo"}, {"color": "#ff002bff", "id": "Adverbios", "label": "\ud83e\udea8 Adverbios", "shape": "dot", "title": "Adverbios"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Interjecciones", "to": "Repaso"}, {"arrows": "to", "from": "Interjecciones", "to": "Sustantivos"}, {"arrows": "to", "from": "Sustantivos", "to": "Determinantes"}, {"arrows": "to", "from": "Sustantivos", "to": "Vocabulario (Sustantivos)"}, {"arrows": "to", "from": "Sustantivos", "to": "Descripciones"}, {"arrows": "to", "from": "Descripciones", "to": "Genitivo"}, {"arrows": "to", "from": "Descripciones", "to": "Vocabulario (Adjetivos)"}, {"arrows": "to", "from": "Descripciones", "to": "Negaci\u00f3n"}, {"arrows": "to", "from": "Descripciones", "to": "Pronombres personales"}, {"arrows": "to", "from": "Pronombres personales", "to": "Sint\u00e9tico intransitivo progresivo"}, {"arrows": "to", "from": "Pronombres personales", "to": "Sint\u00e9tico intransitivo pasado"}, {"arrows": "to", "from": "Pronombres personales", "to": "Per\u00edfrasis NOR perfectivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR perfectivo", "to": "Per\u00edfrasis NOR imperativo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR perfectivo", "to": "Per\u00edfrasis NOR pasado"}, {"arrows": "to", "from": "Per\u00edfrasis NOR perfectivo", "to": "Prospecci\u00f3n"}, {"arrows": "to", "from": "Sint\u00e9tico intransitivo progresivo", "to": "Adlativo"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Adlativo"}, {"arrows": "to", "from": "Sint\u00e9tico intransitivo progresivo", "to": "Inesivo"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Inesivo"}, {"arrows": "to", "from": "Sint\u00e9tico intransitivo progresivo", "to": "Ablativo"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Ablativo"}, {"arrows": "to", "from": "Sint\u00e9tico intransitivo progresivo", "to": "Comitativo"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Comitativo"}, {"arrows": "to", "from": "Sint\u00e9tico intransitivo progresivo", "to": "Locativo"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Locativo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR perfectivo", "to": "Per\u00edfrasis NOR-NORI perfectivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORI perfectivo", "to": "Per\u00edfrasis NOR-NORI pasado"}, {"arrows": "to", "from": "Per\u00edfrasis NOR perfectivo", "to": "Per\u00edfrasis NOR-NORK perfectivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Vocabulario (Verbos)"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Benefactivo"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Benefactivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Causativo"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Causativo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Instrumental"}, {"arrows": "to", "from": "Vocabulario (Sustantivos)", "to": "Instrumental"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Verbos modales"}, {"arrows": "to", "from": "Genitivo", "to": "Partitivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORI perfectivo", "to": "Partitivo"}, {"arrows": "to", "from": "Partitivo", "to": "Partitivo"}, {"arrows": "to", "from": "Negaci\u00f3n", "to": "Postposiciones"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Postposiciones"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Sint\u00e9tico transitivo progresivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORI perfectivo", "to": "Per\u00edfrasis NOR-NORI-NORK perfectivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Per\u00edfrasis NOR-NORI-NORK perfectivo"}, {"arrows": "to", "from": "Per\u00edfrasis NOR-NORK perfectivo", "to": "Adverbios"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"shape": "dot", "size": 20, "font": {"size": 16, "face": "arial", "color": "#000"}, "borderWidth": 1}, "edges": {"arrows": {"to": {"enabled": true, "scaleFactor": 0.6}}, "color": {"color": "#999"}, "smooth": true}, "physics": {"stabilization": true, "barnesHut": {"gravitationalConstant": -30000}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

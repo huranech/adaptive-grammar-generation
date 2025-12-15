@@ -1,0 +1,63 @@
+services:
+  # =========================
+  # 📦 BASE DE DATOS
+  # =========================
+  db:
+    image: postgres:15
+    container_name: tfm_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: database
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # =========================
+  # 🧠 BACKEND (FLASK)
+  # =========================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: tfm_backend
+    working_dir: /app
+    environment:
+      - FLASK_APP=controller.py
+      - FLASK_ENV=development
+      - DB_HOST=db
+      - DB_NAME=database
+      - DB_USER=admin
+      - DB_PASS=admin
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+
+  # =========================
+  # 🌐 FRONTEND (VITE)
+  # =========================
+  frontend:
+    image: node:22
+    container_name: tfm_frontend
+    working_dir: /app
+    command: >
+      bash -c "
+      npm install &&
+      npm run dev -- --host 0.0.0.0
+      "
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

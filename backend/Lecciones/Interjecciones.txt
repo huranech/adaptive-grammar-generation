@@ -1,0 +1,18 @@
+// formato: POS | Palabra Euskera | Significado Español
+
+mandatory_grammar
+INTJ
+PUNCT
+
+mandatory_vocabulary
+PUNCT, ., .
+INTJ, kaixo, hola
+INTJ, agur, adiós
+INTJ, egun on, buenos días
+INTJ, arratsalde on, buenas tardes
+INTJ, gabon, buenas noches
+INTJ, ongi etorri, bienvenido/bienvenida
+INTJ, barkatu, perdón
+INTJ, zorionak, felicidades
+INTJ, mesedez, por favor
+INTJ, eskerrik asko, gracias

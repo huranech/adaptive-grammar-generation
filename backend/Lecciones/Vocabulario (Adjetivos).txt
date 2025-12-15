@@ -1,0 +1,11 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+ADJ
+
+mandatory_vocabulary
+ADJ, gorri, rojo/a
+ADJ, urdin, azul
+ADJ, berde, verde
+ADJ, zuri, blanco/a
+ADJ, beltz, negro/a

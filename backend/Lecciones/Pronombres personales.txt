@@ -1,0 +1,7 @@
+// formato: POS | Palabra Euskera | Significado Español
+
+mandatory_grammar
+PRON
+
+mandatory_vocabulary
+PRON, Bera, él/ella

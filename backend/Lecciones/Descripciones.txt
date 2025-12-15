@@ -1,0 +1,18 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+AUX
+ADJ
+
+mandatory_vocabulary
+AUX, da, es
+ADJ, handi, grande
+ADJ, txiki, pequeño/pequeña
+ADJ, polit, bonito/bonita
+ADJ, itxusi, feo/fea
+ADJ, altu, alto/alta
+ADJ, baxu, bajo/baja
+ADJ, dibertigarri, divertido/divertida
+ADJ, aspergarri, aburrido/aburrida
+ADJ, on, bueno/buena
+ADJ, txar, malo/mala

@@ -1,0 +1,10 @@
+// formato: POS , Palabra Euskera , Significado Español
+
+mandatory_grammar
+DET
+
+mandatory_vocabulary
+DET, bat, un/una
+DET, hau, este
+DET, hori, ese
+DET, bat, un/una
