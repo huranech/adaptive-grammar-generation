@@ -4,6 +4,6 @@ mandatory_grammar
 VERB
 
 mandatory_vocabulary
-VERB, doa, va
+VERB, nator, vengo
+VERB, zatoz, vienes
 VERB, dator, viene
-VERB, dabil, anda

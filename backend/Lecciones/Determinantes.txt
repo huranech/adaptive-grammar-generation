@@ -5,6 +5,5 @@ DET
 
 mandatory_vocabulary
 DET, bat, un/una
-DET, hau, este
-DET, hori, ese
-DET, bat, un/una
+DET, hau, este/esta
+DET, hori, ese/esa

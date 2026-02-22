@@ -1,9 +1,19 @@
 # imports
 import psycopg2
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
 # 🔗 conectar con la base de datos
+def get_db_connection():
+    return psycopg2.connect(
+        host=os.getenv("DB_HOST", "db"),
+        port=5432,
+        database=os.getenv("DB_NAME", "database"),
+        user=os.getenv("DB_USER", "admin"),
+        password=os.getenv("DB_PASS", "admin")
+    )
+
 db_connection = psycopg2.connect(
     host="db",
     port=5432,
@@ -58,6 +68,8 @@ lessons = [
 # =============================================
 def register_user(username, password):
     try:
+        db_connection = get_db_connection()
+
         # 🔑 Hashear contraseña
         hashed_password = generate_password_hash(password)
 
@@ -119,6 +131,7 @@ def login(username, password):
     - Lecciones asociadas con todos sus campos
     """
     try:
+        db_connection = get_db_connection()
         with db_connection.cursor() as cur:
             # 🧍 Obtener usuario
             cur.execute(
@@ -185,6 +198,7 @@ def delete_user(user_id):
     Se borrarán también todos los datos asociados (lecciones, vocabulario, estructuras, etc.)
     """
     try:
+        db_connection = get_db_connection()
         with db_connection.cursor() as cur:
             # 🗑️ Eliminar usuario (cascade eliminará sus datos asociados)
             cur.execute(
@@ -213,6 +227,7 @@ def recovery_knowledge(user_id):
     - Vocabulario conocido (palabra, significado y categoría gramatical)
     """
     try:
+        db_connection = get_db_connection()
         with db_connection.cursor() as cur:
             # 📘 Obtener vocabulario conocido
             cur.execute(
@@ -275,6 +290,7 @@ def complete_lesson(user_id, lesson_name):
       - False en caso de error
     """
     try:
+        db_connection = get_db_connection()
         with db_connection.cursor() as cur:
             # 1) Marcar la lección como completada
             cur.execute(
@@ -368,6 +384,7 @@ def save_knowledge(user_id, lesson_name):
       - False si hubo error
     """
     try:
+        db_connection = get_db_connection()
         # 🧩 Leer archivo de lección
         with open(f"Lecciones/{lesson_name}.txt", "r", encoding="utf-8") as f:
             lines = [line.strip() for line in f if line.strip() and not line.startswith("//")]

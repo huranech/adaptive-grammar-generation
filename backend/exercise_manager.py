@@ -39,10 +39,11 @@ def generate_exercises(user_id, lesson, n=10):
 
         # 🦴 construir el esqueleto gramatical
         grammar_string = grammar_builder.build_grammar_string(lesson, knowledge["known_structures"])
-        print(grammar_string, flush=True)
         
         # ✍️ rellenar esqueleto con palabras
         sentence = sentence_builder.build_sentence(grammar_string, lesson, knowledge["known_vocabulary"])
+        print(grammar_string, flush=True)
+        print(sentence, flush=True)
 
         # ⚙️ procesar frase final
         exercise = sentence_processor.process_sentence(sentence)
@@ -74,8 +75,8 @@ def validate_exercise(user_response_es, solution_es, sentence_eu):
         return True
     
     # ☑️ aproximación 3 - alta cercanía vectorial entre respuesta/traducción del usuario y enunciado/solución
-    #print(cosine_similarity(embedding_model.encode(user_response_es), embedding_model.encode(solution_es)), flush=True)
-    if (cosine_similarity(embedding_model.encode(user_response_es), embedding_model.encode(solution_es)) > 0.95):
+    print(cosine_similarity(embedding_model.encode(user_response_es), embedding_model.encode(solution_es)), flush=True)
+    if (cosine_similarity(embedding_model.encode(user_response_es), embedding_model.encode(solution_es)) > 0.84):
         return True
 
     return False

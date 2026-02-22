@@ -12,5 +12,5 @@ NOUN, mutil, chico
 NOUN, neska, chica
 NOUN, gizon, hombre
 NOUN, emakume, mujer
-NOUN, ur, agua
+NOUN, aulki, silla
 NOUN, etxe, casa

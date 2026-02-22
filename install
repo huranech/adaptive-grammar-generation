@@ -1,0 +1,87 @@
+[33mcommit 528d3ffb4596f2901237bdf11d5a2b673774dcdc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: huranech <hugo.ran142@gmail.com>
+Date:   Wed Feb 4 18:53:57 2026 +0100
+
+    codigo fuente
+
+ .gitattributes | 1 [32m+[m
+ 1 file changed, 1 insertion(+)
+
+[33mcommit 33781d971efb92fe2f2a3f59effd865128f70c64[m
+Author: huranech <hugo.ran142@gmail.com>
+Date:   Mon Dec 15 18:26:38 2025 +0100
+
+    TFM commit
+
+ .gitattributes                                     |     1 [32m+[m
+ .gitignore                                         |    19 [32m+[m
+ README.md                                          |     0
+ backend/Dockerfile                                 |    23 [32m+[m
+ backend/Lecciones/Conjunciones.txt                 |     8 [32m+[m
+ backend/Lecciones/Descripciones.txt                |    18 [32m+[m
+ backend/Lecciones/Determinantes.txt                |    10 [32m+[m
+ backend/Lecciones/Genitivo.txt                     |     7 [32m+[m
+ backend/Lecciones/Interjecciones.txt               |    18 [32m+[m
+ backend/Lecciones/Pronombres personales.txt        |     7 [32m+[m
+ backend/Lecciones/Repaso.txt                       |     6 [32m+[m
+ .../Sint\303\251tico intransitivo progresivo.txt"  |     9 [32m+[m
+ backend/Lecciones/Sustantivos.txt                  |    16 [32m+[m
+ backend/Lecciones/Vocabulario (Adjetivos).txt      |    11 [32m+[m
+ backend/Lecciones/Vocabulario (Sustantivos).txt    |    15 [32m+[m
+ backend/controller.py                              |   126 [32m+[m
+ backend/dbmanager.py                               |   427 [32m+[m
+ backend/exercise_manager.py                        |   136 [32m+[m
+ backend/grammar_builder.py                         |    55 [32m+[m
+ backend/lessons_graph.html                         |   127 [32m+[m
+ backend/lib/bindings/utils.js                      |   189 [32m+[m
+ backend/lib/tom-select/tom-select.complete.min.js  |   356 [32m+[m
+ backend/lib/tom-select/tom-select.css              |   334 [32m+[m
+ backend/lib/vis-9.1.2/vis-network.css              |     1 [32m+[m
+ backend/lib/vis-9.1.2/vis-network.min.js           |    27 [32m+[m
+ backend/modelos/grammar_model/grammar_model.py     |   104 [32m+[m
+ backend/modelos/grammar_model/grammar_model.txt    |    30 [32m+[m
+ .../modelos/grammar_model/grammar_model_train.py   |   134 [32m+[m
+ .../modelos/translation/opus-mt-es-eu/config.json  |    61 [32m+[m
+ .../opus-mt-es-eu/generation_config.json           |    16 [32m+[m
+ .../translation/opus-mt-es-eu/pytorch_model.bin    |     3 [32m+[m
+ .../modelos/translation/opus-mt-es-eu/source.spm   |   Bin [31m0[m -> [32m834380[m bytes
+ .../opus-mt-es-eu/special_tokens_map.json          |     5 [32m+[m
+ .../modelos/translation/opus-mt-es-eu/target.spm   |   Bin [31m0[m -> [32m825362[m bytes
+ .../opus-mt-es-eu/tokenizer_config.json            |    12 [32m+[m
+ .../modelos/translation/opus-mt-es-eu/vocab.json   | 58062 [32m+++++++++++++++++++[m
+ .../modelos/translation/opus-mt-eu-es/config.json  |    61 [32m+[m
+ .../opus-mt-eu-es/generation_config.json           |    16 [32m+[m
+ .../translation/opus-mt-eu-es/pytorch_model.bin    |     3 [32m+[m
+ .../modelos/translation/opus-mt-eu-es/source.spm   |   Bin [31m0[m -> [32m825362[m bytes
+ .../opus-mt-eu-es/special_tokens_map.json          |     5 [32m+[m
+ .../modelos/translation/opus-mt-eu-es/target.spm   |   Bin [31m0[m -> [32m834380[m bytes
+ .../opus-mt-eu-es/tokenizer_config.json            |    12 [32m+[m
+ .../modelos/translation/opus-mt-eu-es/vocab.json   | 58062 [32m+++++++++++++++++++[m
+ backend/pruebas.py                                 |    18 [32m+[m
+ backend/requirements.txt                           |    11 [32m+[m
+ backend/sentence_builder.py                        |    50 [32m+[m
+ backend/sentence_processor.py                      |   125 [32m+[m
+ database/init.sql                                  |    46 [32m+[m
+ docker-compose.yaml                                |    63 [32m+[m
+ frontend/.gitignore                                |    24 [32m+[m
+ frontend/README.md                                 |    12 [32m+[m
+ frontend/eslint.config.js                          |    29 [32m+[m
+ frontend/index.html                                |    13 [32m+[m
+ frontend/package-lock.json                         |  2850 [32m+[m
+ frontend/package.json                              |    28 [32m+[m
+ frontend/public/images/euskadi.jpg                 |   Bin [31m0[m -> [32m440712[m bytes
+ frontend/public/vite.svg                           |     1 [32m+[m
+ frontend/src/App.jsx                               |    21 [32m+[m
+ .../src/components/LearningNode/LearningNode.css   |   140 [32m+[m
+ .../src/components/LearningNode/LearningNode.jsx   |    64 [32m+[m
+ frontend/src/main.jsx                              |    11 [32m+[m
+ frontend/src/pages/Index/Index.css                 |   170 [32m+[m
+ frontend/src/pages/Index/Index.jsx                 |   109 [32m+[m
+ frontend/src/pages/LearningTree/LearningTree.css   |   150 [32m+[m
+ frontend/src/pages/LearningTree/LearningTree.jsx   |   130 [32m+[m
+ frontend/src/pages/Stage/Stage.css                 |   486 [32m+[m
+ frontend/src/pages/Stage/Stage.jsx                 |   273 [32m+[m
+ frontend/src/services/databaseService.js           |    96 [32m+[m
+ frontend/src/services/sentenceService.js           |    53 [32m+[m
+ frontend/vite.config.js                            |     7 [32m+[m
+ 71 files changed, 123512 insertions(+)

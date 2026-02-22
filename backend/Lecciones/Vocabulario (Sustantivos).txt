@@ -11,5 +11,5 @@ NOUN, txori, pájaro
 NOUN, katu, gato
 NOUN, txakur, perro
 NOUN, ikasle, estudiante
-NOUN, hosto, hoja
+NOUN, enbor, tronco
 NOUN, zuhaitz, árbol

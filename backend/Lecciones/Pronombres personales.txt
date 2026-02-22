@@ -4,4 +4,9 @@ mandatory_grammar
 PRON
 
 mandatory_vocabulary
-PRON, Bera, él/ella
+PRON, ni, yo
+PRON, zu, Tú
+PRON, bera, él/ella
+AUX, naiz, soy
+AUX, zara, eres
+AUX, da, es

@@ -9,7 +9,7 @@ AUX, da, es
 ADJ, handi, grande
 ADJ, txiki, pequeño/pequeña
 ADJ, polit, bonito/bonita
-ADJ, itxusi, feo/fea
+ADJ, garbi, limpio/limpia
 ADJ, altu, alto/alta
 ADJ, baxu, bajo/baja
 ADJ, dibertigarri, divertido/divertida
